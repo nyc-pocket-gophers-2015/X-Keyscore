@@ -53,50 +53,102 @@ attr_reader :deck
       @current_card = deck.draw_card(@card_index)
       # Displays a card object
       View.display(@current_card.question)
-      guess
+      guess1
     end
   end
 
-  def guess
-    until user_input == 'quit'
-      guess_counter = 1
+  # def guess
+  #   until user_input == 'quit'
+  #     guess_counter = 1
+  #     player_guess = user_input
+  #     if player_guess == @current_card.answer
+  #       View.correct_answer(player_guess)
+  #       @card_index = @card_index + 1
+  #       @score += 3
+  #       start
+  #     else
+  #       View.wrong_answer(player_guess)
+  #       guess_counter += 1
+  #       View.hint1(@current_card.answer)
+  #       player_guess = user_input
+  #       if player_guess == @current_card.answer
+  #         View.correct_answer(player_guess)
+  #         @score += 2
+  #         @card_index += 1
+  #         start
+  #       else
+  #         View.wrong_answer(player_guess)
+  #         guess_counter += 1
+  #         View.hint2(@current_card.answer)
+  #         player_guess = user_input
+  #         if player_guess == @current_card.answer
+  #           View.correct_answer(player_guess)
+  #           @score += 1
+  #           @card_index += 1
+  #           start
+  #         else
+  #           View.wrong_answer(player_guess)
+  #           View.correct_answer(@current_card.answer)
+  #           @card_index += 1
+  #           start
+  #         end
+  #       end
+  #     end
+  #   end
+
+  def guess1
+    player_guess = user_input
+    unless player_guess == 'quit'
+
+    if player_guess == @current_card.answer
+      View.correct_answer(player_guess)
+      @card_index = @card_index + 1
+      @score += 3
+      start
+    else
+      guess2(player_guess)
+    end
+  end
+  end
+
+  def guess2(player_guess)
+    unless player_guess == 'quit'
+      View.wrong_answer(player_guess)
+      View.hint1(@current_card.answer)
       player_guess = user_input
       if player_guess == @current_card.answer
         View.correct_answer(player_guess)
-        @card_index = @card_index + 1
-        @score += 3
+        @score += 2
+        @card_index += 1
         start
       else
-        View.wrong_answer(player_guess)
-        guess_counter += 1
-        View.hint1(@current_card.answer)
-        player_guess = user_input
-        if player_guess == @current_card.answer
-          View.correct_answer(player_guess)
-          @score += 2
-          @card_index += 1
-          start
-        else
-          View.wrong_answer(player_guess)
-          guess_counter += 1
-          View.hint2(@current_card.answer)
-          player_guess = user_input
-          if player_guess == @current_card.answer
-            View.correct_answer(player_guess)
-            @score += 1
-            @card_index += 1
-            start
-          else
-            View.wrong_answer(player_guess)
-            View.correct_answer(@current_card.answer)
-            @card_index += 1
-            start
-          end
-        end
+        guess3(player_guess)
       end
     end
   end
 
+  def guess3(player_guess)
+    unless player_guess == 'quit'
+      View.wrong_answer(player_guess)
+      View.hint2(@current_card.answer)
+      player_guess = user_input
+      if player_guess == @current_card.answer
+        View.correct_answer(player_guess)
+        @score += 1
+        @card_index += 1
+        start
+      else
+        final_guess(player_guess)
+      end
+    end
+  end
+
+  def final_guess(player_guess)
+    View.wrong_answer(player_guess)
+    View.correct_answer(@current_card.answer)
+    @card_index += 1
+    start
+  end
 end
 
 dex = Deck.new
