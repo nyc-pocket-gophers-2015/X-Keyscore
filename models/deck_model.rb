@@ -6,6 +6,10 @@ class Deck
   def initialize
     @deck = FlashCard.parse("flashcards.txt")
   end
+
+  def self.draw_card(index)
+    @deck[index].to_s
+  end
 end
 dex = Deck.new
-# p dex.deck[0].flip[0]
+
