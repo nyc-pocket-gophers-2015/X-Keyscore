@@ -11,8 +11,14 @@ class Deck
     @deck[index]
   end
 
+  def shuffle
+    @deck.shuffle!
+  end
 
+  def length
+    @deck.length
+  end
 end
 
 # test1 = Deck.new
-# p test1.draw_card(1)
+# p test1.length
