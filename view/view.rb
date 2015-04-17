@@ -20,7 +20,7 @@ class View
   end
 
   def self.correct_answer(player_guess)
-    puts "#{player_guess} is correct!!!!!"
+    puts "#{player_guess} is the correct answer!!!"
   end
 
   def self.wrong_answer(player_guess)
@@ -32,7 +32,7 @@ class View
   end
 
   def self.hint2(answer)
-    puts "Bigger hint... #{answer[0]..answer[1]}"
+    puts "Bigger hint... #{answer[0..1]}"
   end
 
 end
