@@ -1,15 +1,18 @@
 require_relative '../module/parse_module'
-require_relative 'card_model'
+
 class Deck
   attr_reader :deck
-  include FlashCard
+
   def initialize
-    @deck = FlashCard.parse("flashcards.txt")
+    @deck = FlashCard.parse("../module/flashcards.txt")
   end
 
-  def self.draw_card(index)
-    @deck[index].to_s
+  def draw_card(index)
+    @deck[index]
   end
+
+
 end
-dex = Deck.new
 
+# test1 = Deck.new
+# p test1.draw_card(1)
