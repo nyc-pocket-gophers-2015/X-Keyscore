@@ -8,17 +8,16 @@ class Deck
   end
 
   def draw_card(index)
-    @deck[index]
+    deck[index]
   end
 
   def shuffle
-    @deck.shuffle!
+    deck.shuffle!
   end
 
   def length
-    @deck.length
+    deck.length
   end
 end
 
-# test1 = Deck.new
-# p test1.length
+# You don't need instance variable if you have a reader
