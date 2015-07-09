@@ -1,3 +1,4 @@
+# great view model
 class View
 
   def self.display(arg)
